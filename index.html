@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FreshBite | Online Food Ordering</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="brand"><span>🍴</span> FreshBite</div>
+    <nav>
+      <button class="navbtn active" data-page="home">Home</button>
+      <button class="navbtn" data-page="restaurants">Restaurants</button>
+      <button class="navbtn" data-page="orders">My Orders</button>
+      <button class="navbtn" data-page="admin">Admin</button>
+    </nav>
+    <button id="cartBtn" class="cart">🛒 Cart <b id="cartCount">0</b></button>
+  </div>
+</header>
+
+<main>
+<section id="home" class="page active">
+  <div class="hero">
+    <div>
+      <p class="eyebrow">FAST • FRESH • DELICIOUS</p>
+      <h1>Your favourite food,<br><span>delivered fresh.</span></h1>
+      <p class="lead">Discover local restaurants, explore menus and get your meal delivered to your door.</p>
+      <button class="primary" onclick="showPage('restaurants')">Explore Restaurants →</button>
+    </div>
+    <div class="hero-card">🍕<br><strong>FreshBite</strong><small>Made for food lovers</small></div>
+  </div>
+  <h2>Popular today</h2>
+  <div id="popular" class="restaurant-grid"></div>
+</section>
+
+<section id="restaurants" class="page">
+  <div class="section-head">
+    <div><p class="eyebrow">DISCOVER</p><h2>Restaurants & Menus</h2></div>
+    <input id="search" class="search" placeholder="Search restaurants or food..." oninput="renderRestaurants()">
+  </div>
+  <div id="restaurantGrid" class="restaurant-grid"></div>
+</section>
+
+<section id="menuPage" class="page">
+  <button class="back" onclick="showPage('restaurants')">← Back to restaurants</button>
+  <div id="menuHeader"></div>
+  <div id="menuGrid" class="menu-grid"></div>
+</section>
+
+<section id="orders" class="page">
+  <p class="eyebrow">TRACKING</p><h2>My Orders</h2>
+  <div id="ordersList"></div>
+</section>
+
+<section id="admin" class="page">
+  <p class="eyebrow">MANAGEMENT</p><h2>Restaurant Admin</h2>
+  <div class="admin-card">
+    <h3>Menu Management</h3>
+    <div class="form-row">
+      <input id="newName" placeholder="Food item name">
+      <input id="newPrice" type="number" placeholder="Price (₹)">
+      <button class="primary" onclick="addMenuItem()">Add Item</button>
+    </div>
+    <div id="adminMenu"></div>
+  </div>
+</section>
+</main>
+
+<div id="cartPanel" class="overlay hidden">
+  <div class="drawer">
+    <div class="drawer-head"><h2>Your Cart</h2><button onclick="closeCart()">✕</button></div>
+    <div id="cartItems"></div>
+    <div class="total"><span>Total</span><strong id="cartTotal">₹0</strong></div>
+    <button class="primary full" onclick="checkout()">Place Order</button>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
